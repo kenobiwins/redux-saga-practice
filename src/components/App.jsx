@@ -1,16 +1,18 @@
-export const App = () => {
+import { Api } from 'Api/Api';
+
+export const App = props => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <button onClick={() => Api.fetchDog(props.dispatch)}>Show Dog</button>
+      {this.props.loading ? (
+        <p>Loading...</p>
+      ) : this.props.error ? (
+        <p>Error, try again</p>
+      ) : (
+        <p>
+          <img src={this.props.url} alt="dog" />
+        </p>
+      )}
     </div>
   );
 };
